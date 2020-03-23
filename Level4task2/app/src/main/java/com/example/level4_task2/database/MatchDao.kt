@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.level4_task2.model.Match
+import java.util.*
 
 @Dao
 interface MatchDao {
@@ -20,6 +21,11 @@ interface MatchDao {
 
     @Query("DELETE FROM match_table")
     suspend fun deleteAllMatches()
+
+
+    @Query("SELECT * FROM match_table WHERE date_match BETWEEN :from AND :to")
+    fun findUsersBornBetweenDates(from: Date, to: Date): List<Match>
+
 }
 
 

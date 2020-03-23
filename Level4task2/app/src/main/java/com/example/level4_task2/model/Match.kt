@@ -27,8 +27,10 @@ data class Match (
 
     // Result
     @ColumnInfo(name = "match_result")
-    var matchResult: String
+    var matchResult: String,
 
+    @ColumnInfo(name = "date_match")
+    var matchDate: String
 
 
     ): Parcelable
