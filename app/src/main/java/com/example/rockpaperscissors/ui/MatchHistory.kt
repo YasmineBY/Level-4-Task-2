@@ -36,9 +36,9 @@ class MatchHistory : AppCompatActivity() {
         rvMatchHistory.addItemDecoration(DividerItemDecoration(this@MatchHistory, DividerItemDecoration.VERTICAL))
         matchRepository = MatchRepository(this)
         matchAdapter.notifyDataSetChanged()
-        addMatch()
+        getMatchesFromDatabase()
     }
-    
+
     private fun addMatch() {
             mainScope.launch {
                 val match = Match(

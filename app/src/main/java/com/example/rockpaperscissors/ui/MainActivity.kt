@@ -24,12 +24,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var matchRepository: MatchRepository
     private val mainScope = CoroutineScope(Dispatchers.Main)
-
+    private val matches = arrayListOf<Match>()
+    private val matchAdapter = MatchAdapter(matches)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        matchRepository = MatchRepository(this)
+
         initViews()
     }
 
@@ -63,14 +66,11 @@ class MainActivity : AppCompatActivity() {
     private fun computerPick() {
         var computerChoice = " "
         var matchResult = " "
-        var matchDate = " "
-
         val randompPick: Int = (1..3).random()
-
-
         if(randompPick == 1) {
-            imgCpuChoice.setImageResource(R.drawable.rock)
             computerChoice = "rock"
+            imgCpuChoice.setImageResource(R.drawable.rock)
+
                  if(playerChoice == "paper") {
                      matchResult = "win"
                  } else if (playerChoice == "rock"){
@@ -81,34 +81,73 @@ class MainActivity : AppCompatActivity() {
         }
 
         if(randompPick == 2) {
+            computerChoice = "paper"
             imgCpuChoice.setImageResource(R.drawable.paper)
+
+            if(playerChoice == "scissors") {
+                matchResult = "win"
+            } else if (playerChoice == "paper"){
+                matchResult = "draw"
+            } else{
+                matchResult = "lose"
+            }
         }
         if(randompPick == 3) {
+            computerChoice = "scissors"
             imgCpuChoice.setImageResource(R.drawable.scissors)
+
+            if(playerChoice == "rock") {
+                matchResult = "win"
+            } else if (playerChoice == "scissors"){
+                matchResult = "draw"
+            } else{
+                matchResult = "lose"
+            }
         }
 
 
-        mainScope.launch {
         val newMatch = Match (
             choicePlayer = playerChoice,
             computerChoice = computerChoice,
             matchResult = matchResult,
             matchDate = Calendar.getInstance().time.toString()
         )
-            withContext(Dispatchers.IO) {
-                matchRepository.insertMatch(newMatch)
+
+            mainScope.launch {
+                val match = Match(
+                    choicePlayer = "paper",
+                    computerChoice = "paper",
+                    matchResult = "draw",
+                    matchDate = Calendar.getInstance().time.toString()
+                )
+                withContext(Dispatchers.IO) {
+                    matchRepository.insertMatch(match)
+                }
+                getMatchesFromDatabase()
             }
-
-        }
-
-
-
-
-
     }
 
 
 
+    private fun addMatch(newMatch: Match) {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                matchRepository.insertMatch(newMatch)
+            }
+        }
+    }
+
+
+    private fun getMatchesFromDatabase() {
+        mainScope.launch {
+            val matchList = withContext(Dispatchers.IO) {
+                matchRepository.getAllMatches()
+            }
+            this@MainActivity.matches.clear()
+            this@MainActivity.matches.addAll(matchList)
+            this@MainActivity.matchAdapter.notifyDataSetChanged()
+        }
+    }
 
 
 
