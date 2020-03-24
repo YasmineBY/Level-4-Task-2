@@ -6,7 +6,6 @@
     <string name="MenuTitle">Delete Match History</string>
 
     <string name="Statisticsheader">Your all time statistics</string>
-    <string name="wdlRatio">win: , Draw: , Lose: </string>
     <string name="action_settings">Settings</string>
 
     <string name="Matchresult">  </string>

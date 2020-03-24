@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         btnRock.setOnClickListener() {onRockClick() }
         btnPaper.setOnClickListener() { onPaperClick()}
         btnScissors.setOnClickListener() { onScissorsClick() }
+        updateUI()
     }
 
     private fun onRockClick() {
@@ -112,19 +113,7 @@ class MainActivity : AppCompatActivity() {
             matchResult = matchResult,
             matchDate = Calendar.getInstance().time.toString()
         )
-
-            mainScope.launch {
-                val match = Match(
-                    choicePlayer = "paper",
-                    computerChoice = "paper",
-                    matchResult = "draw",
-                    matchDate = Calendar.getInstance().time.toString()
-                )
-                withContext(Dispatchers.IO) {
-                    matchRepository.insertMatch(match)
-                }
-                getMatchesFromDatabase()
-            }
+        addMatch(newMatch)
     }
 
 
@@ -135,6 +124,7 @@ class MainActivity : AppCompatActivity() {
                 matchRepository.insertMatch(newMatch)
             }
         }
+        updateUI()
     }
 
 
@@ -147,10 +137,31 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity.matches.addAll(matchList)
             this@MainActivity.matchAdapter.notifyDataSetChanged()
         }
+
+
+
     }
 
+    private fun updateUI(){
+        getMatchesFromDatabase()
+        var wins: Int = 0
+        var lose: Int  = 0
+        var draws: Int = 0
 
+        for (i in matches){
+            if(i.matchResult == "win"){
+                wins = wins+1
+            }
+            if(i.matchResult == "lose"){
+                lose = lose+1
+            }
+            if(i.matchResult == "draw"){
+                draws = draws+1
+            }
+        }
+        txtwindrawlose.text = "wins $wins draw $draws losses $lose"
 
+    }
 
 
 
