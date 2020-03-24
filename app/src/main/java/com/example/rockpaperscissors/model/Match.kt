@@ -14,7 +14,7 @@ data class Match (
 
     // Choice player
     @ColumnInfo(name = "player_choice")
-    var chocicePlayer: String,
+    var choicePlayer: String,
 
     // Choice computer
     @ColumnInfo(name = "computer_choice")
@@ -25,8 +25,8 @@ data class Match (
     var matchResult: String,
 
     // Date
-//    @ColumnInfo(name = "date_match")
-//    var matchDate: String,
+    @ColumnInfo(name = "date_match")
+    var matchDate: String,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

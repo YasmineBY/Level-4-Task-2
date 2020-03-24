@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.MatchHistory">
 
+    <include
+        layout="@layout/content_match_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
