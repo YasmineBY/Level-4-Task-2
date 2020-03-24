@@ -11,4 +11,7 @@
 
     <string name="you">You</string>
     <string name="cpu">Computer</string>
+
+    <string name="date">date: </string>
+
 </resources>
