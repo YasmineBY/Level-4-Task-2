@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
             matchResult = matchResult,
             matchDate = Calendar.getInstance().time.toString()
         )
+        txtMatchResult.text = matchResult
         addMatch(newMatch)
     }
 
@@ -138,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun updateUI(){
+    private fun updateUI() {
         getMatchesFromDatabase()
         var wins: Int = 0
         var lose: Int  = 0

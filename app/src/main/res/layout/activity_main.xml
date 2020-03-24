@@ -57,9 +57,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="186dp"
-        android:layout_height="41dp"
+        android:id="@+id/txtMatchResult"
+        android:layout_width="131dp"
+        android:layout_height="35dp"
         android:layout_marginTop="50dp"
         android:text="@string/Matchresult"
         android:textSize="30sp"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/txtMatchResult"
         app:srcCompat="@drawable/rock" />
 
     <ImageView
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/txtMatchResult"
         app:srcCompat="@drawable/rock" />
 
     <TextView
@@ -108,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatchResult" />
 
     <Button
         android:id="@+id/btnScissors"
