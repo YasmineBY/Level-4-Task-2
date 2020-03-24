@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/historyCpuChoice"
         android:layout_width="137dp"
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/scissors" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/historyPlayerChoice"
         android:layout_width="137dp"
         android:layout_height="119dp"
         android:layout_marginTop="132dp"
@@ -41,30 +41,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="184dp"
-        android:text="TextView"
+        android:text="@string/cpu"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/historyCpuChoice" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
-        android:text="TextView"
+        android:layout_marginEnd="76dp"
+        android:text="@string/you"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/historyPlayerChoice" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        android:text="@string/vs"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/historyPlayerChoice"
+        app:layout_constraintStart_toEndOf="@+id/historyCpuChoice"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

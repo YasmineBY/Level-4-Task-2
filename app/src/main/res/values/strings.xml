@@ -9,11 +9,12 @@
     <string name="wdlRatio">win: , Draw: , Lose: </string>
     <string name="action_settings">Settings</string>
 
-    <string name="Matchresult">You ? ! </string>
+    <string name="Matchresult">  </string>
 
 
     <string name="you">You</string>
     <string name="cpu">Computer</string>
+    <string name="vs">V.S.</string>
 
     <string name="date">date: </string>
 

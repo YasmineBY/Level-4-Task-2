@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rockpaperscissors.R
 import com.example.rockpaperscissors.model.Match
 import kotlinx.android.synthetic.main.content_match_history.*
+import kotlinx.android.synthetic.main.item_match.*
 import java.util.*
 
 class MatchHistory : AppCompatActivity() {
@@ -27,15 +28,23 @@ class MatchHistory : AppCompatActivity() {
         rvMatchHistory.layoutManager = LinearLayoutManager(this@MatchHistory, RecyclerView.VERTICAL, false)
         rvMatchHistory.adapter = matchAdapter
         rvMatchHistory.addItemDecoration(DividerItemDecoration(this@MatchHistory, DividerItemDecoration.VERTICAL))
+
+        newMatch()
+    }
+
+    private fun newMatch() {
+
         matches.add(Match(
-             choicePlayer = "Rcok",
+            choicePlayer = "Rock",
             computerChoice = "Paper",
             matchResult = "Win",
             matchDate = Calendar.getInstance().time.toString()
         )
         )
+
         matchAdapter.notifyDataSetChanged()
 
     }
+
 
 }
