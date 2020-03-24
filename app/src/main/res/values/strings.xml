@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Level4-task2</string>
+
+    <string name="Welcome">Welcome</string>
+    <string name="Instructions">Instructions: select rock,paper or scissors to play.</string>
+    <string name="Statisticsheader">Your all time statistics</string>
+    <string name="wdlRatio">win: , Draw: , Lose: </string>
+
+    <string name="Matchresult">You ? ! </string>
+
+
+    <string name="you">You</string>
+    <string name="cpu">Computer</string>
+</resources>
