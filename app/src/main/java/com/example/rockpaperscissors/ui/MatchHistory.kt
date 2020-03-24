@@ -35,9 +35,9 @@ class MatchHistory : AppCompatActivity() {
     private fun newMatch() {
 
         matches.add(Match(
-            choicePlayer = "Rock",
-            computerChoice = "Paper",
-            matchResult = "Win",
+            choicePlayer = "rock",
+            computerChoice = "scissors",
+            matchResult = "win",
             matchDate = Calendar.getInstance().time.toString()
         )
         )
