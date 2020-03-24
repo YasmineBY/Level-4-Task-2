@@ -1,7 +1,11 @@
 package com.example.rockpaperscissors.ui
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +19,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
+
+
+
+const val RETURN_HOME = "RETURN_HOME"
 
 class MatchHistory : AppCompatActivity() {
     private val matches = arrayListOf<Match>()
@@ -39,19 +47,43 @@ class MatchHistory : AppCompatActivity() {
         getMatchesFromDatabase()
     }
 
-    private fun addMatch() {
-            mainScope.launch {
-                val match = Match(
-                    choicePlayer = "rock",
-                    computerChoice = "scissors",
-                    matchResult = "win",
-                    matchDate = Calendar.getInstance().time.toString()
-                )
-                withContext(Dispatchers.IO) {
-                    matchRepository.insertMatch(match)
-                }
-                getMatchesFromDatabase()
+    private fun previousScreen(){
+
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_history, menu)
+        return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val resultIntent = Intent()
+
+        return when (item.itemId) {
+            R.id.action_delete_match_history -> {
+                deleteAllMatches()
+                true
+            }
+            R.id.action_return -> {
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
+             true
+             }
+            else -> super.onOptionsItemSelected(item)
         }
+
+    }
+
+    private fun deleteAllMatches() {
+        mainScope.launch {
+            val matchList = withContext(Dispatchers.IO) {
+                matchRepository.deleteAllMatches()
+            }
+        }
+
     }
 
 
@@ -65,22 +97,7 @@ class MatchHistory : AppCompatActivity() {
             this@MatchHistory.matchAdapter.notifyDataSetChanged()
         }
     }
-//    private fun newMatch() {
-//
-//        matches.add(Match(
-//            choicePlayer = "rock",
-//            computerChoice = "scissors",
-//            matchResult = "win",
-//            matchDate = Calendar.getInstance().time.toString()
-//        ))
-//    }
-//    private fun newMatch2() {
-//        matches.add(Match(
-//            choicePlayer = "paper",
-//            computerChoice = "paper",
-//            matchResult = "draw",
-//            matchDate = Calendar.getInstance().time.toString()
-//        ))
-//    }
+
+
 
 }

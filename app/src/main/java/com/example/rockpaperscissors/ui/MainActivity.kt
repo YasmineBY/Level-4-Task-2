@@ -32,14 +32,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         matchRepository = MatchRepository(this)
-
         initViews()
     }
 
     private fun initViews() {
-
-
-
         btnRock.setOnClickListener() {onRockClick() }
         btnPaper.setOnClickListener() { onPaperClick()}
         btnScissors.setOnClickListener() { onScissorsClick() }
@@ -173,28 +169,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-
-
         R.id.action_view_match_history -> {
             startMatchHistory()
             true
+                  }
+            else -> super.onOptionsItemSelected(item)
         }
-        else -> super.onOptionsItemSelected(item)
-
-    }
-
-
     }
 
     private fun startMatchHistory() {
         val intent = Intent(this, MatchHistory::class.java)
         startActivityForResult(intent, MATCH_HISTORY_REQUEST_CODE)
     }
-
 
     }
 
