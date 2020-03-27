@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.rockpaperscissors.R
 import com.example.rockpaperscissors.database.MatchRepository
-import com.example.rockpaperscissors.databinding.ActivityMainBinding
 import com.example.rockpaperscissors.model.Match
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +20,6 @@ const val MATCH_HISTORY_REQUEST_CODE = 100
 
 class MainActivity : AppCompatActivity() {
     private var playerChoice: String = "rock"
-    private lateinit var binding: ActivityMainBinding
     private lateinit var matchRepository: MatchRepository
     private val mainScope = CoroutineScope(Dispatchers.Main)
     private val matches = arrayListOf<Match>()

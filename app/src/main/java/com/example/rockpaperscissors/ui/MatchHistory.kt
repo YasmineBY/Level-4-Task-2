@@ -65,6 +65,7 @@ class MatchHistory : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_delete_match_history -> {
                 deleteAllMatches()
+                finish()
                 true
             }
             R.id.action_return -> {
