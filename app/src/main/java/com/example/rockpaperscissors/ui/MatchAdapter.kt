@@ -29,7 +29,7 @@ class MatchAdapter(private val matches: List<Match>) : RecyclerView.Adapter<Matc
         fun bind(match: Match) {
             itemView.txtResult.text = match.matchResult
             itemView.txtDate.text = match.matchDate
-            when(match.choicePlayer){
+            when(match.choicePlayer) {
             "rock" ->   itemView.historyPlayerChoice.setImageResource(R.drawable.rock)
             "paper" ->   itemView.historyPlayerChoice.setImageResource(R.drawable.paper)
             "scissors" ->   itemView.historyPlayerChoice.setImageResource(R.drawable.scissors)
